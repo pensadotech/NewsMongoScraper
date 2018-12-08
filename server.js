@@ -15,7 +15,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true }))
 // express middleware: capable to handle simple json
 app.use(bodyParser.json())
- 
+
+// Api and Html routes
+require('./routes')(app)
+
 // Start listening - use 3000 if available or next available port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {

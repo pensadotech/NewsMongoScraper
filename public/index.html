@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Mongo Scraper</title>
+
+  <!-- Compiled and minified CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./app.css">
+
 </head>
+
 <body>
 
-  <h1>Hello New Yor Times!</h1>
-  
+  <nav>
+    <nav class="nav-extended indigo darken-4">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">News Mongo Scraper</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/"><i class="material-icons left">home</i></a></li>
+          <li><a href="/savedarticles"><i class="material-icons left">library_books</i></a></li>
+          <a class="waves-effect waves-light btn" onclick="btnScrapeClick()">Scrape new Articles</a>
+          <a class="waves-effect waves-light btn" onclick="btnClearClick()">Clear Articles</a>
+        </ul>
+
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="/"><i class="material-icons left">home</i></a></li>
+      <li><a href="/savedarticles"><i class="material-icons left">library_books</i></a></li>
+      <a class="waves-effect waves-light btn" onclick="btnScrapeClick()">Scrape new Articles</a>
+      <a class="waves-effect waves-light btn" onclick="btnClearClick()">Clear Articles</a>
+    </ul>
+
+    <div class="container">
+
+      <h1>Mongo Scraper</h1>
+      <h4>CNN latest news</h4>
+
+
+      <div id="articles">
+
+        <p>data goes here</p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- JS for side NavBar -->
+    <script src="./app.js"></script>
+
 </body>
+
 </html>
