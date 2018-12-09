@@ -30,7 +30,7 @@ body {
 }
 
 .container {
-  background-color: rgb(250, 252, 253);
+  /* background-color: rgb(250, 252, 253); */
   /* Transparent background */
   opacity: 0.9;
   margin-top: 20px;
@@ -43,7 +43,7 @@ body {
   font-size: 24px;
 }
 
-a:hover {
+nav a:hover {
   font-size: 25px;
 }
 
@@ -56,8 +56,8 @@ a:hover {
 }
 
 .articleImg {
-  margin: 25px 0px 0px 25px;
-  width: 200px;
+  margin: 15px 0px 0px 25px;
+  width: 180px;
 }
 
 .nav-item {

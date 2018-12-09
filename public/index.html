@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Nasa headlines</title>
+  <title>Nasa saved artciles</title>
   <link rel="icon" href="./images/nasaTransp.png">
 
   <!-- awsome fonts and Bootstrap-->
@@ -25,11 +25,10 @@
     <!-- Logo and header -->
     <div class="row">
       <div class="col-md-4">
-        <img class="logoImg" src="./images/nasa1.png" alt="NasaLogo">
+        <img src="./images/nasa1.png" alt="NasaLogo">
       </div>
       <div class="col-md-3 headerLetters">
-        <h1>Headlines</h1>
-        <h5>Mongo Scraper</h5>
+        <h1>Headlines saved</h1>
       </div>
       <div class="col-md-5">
         <!--Leave empty  -->
@@ -51,13 +50,10 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item ml-auto">
-            <a class="nav-link" href="/savedarticles">Articles</a>
+            <a class="nav-link" href="/scrapearticles">Get more Articles</a>
           </li>
           <li class="nav-item ml-auto">
-            <a class="btn btn-secondary" onclick="btnScrapeClick()">Get Articles</a>
-          </li>
-          <li class="nav-item ml-auto">
-            <a class="btn btn-secondary" onclick="btnClearClick()">Clear Articles</a>
+            <a class="btn btn-secondary" onclick="btnDeleteAllClick()">Delete All Articles</a>
           </li>
         </ul>
       </div>
@@ -65,7 +61,6 @@
     </nav>
 
   </header>
-
 
   <div class="container">
 
@@ -75,7 +70,6 @@
 
   </div>
 
-
   <!-- Boostrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -83,32 +77,38 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-  <!-- App JavaScript -->
+  <!-- JS for side NavBar -->
   <script src="./app.js"></script>
 
   <!-- App JavaScript -->
   <script>
-    // dynamic buttons elements handlers 
-    document.addEventListener('click', e => {
+   // dynamic buttons elements handlers 
+   document.addEventListener('click', e => {
       // override from-submit default behavior
       event.preventDefault()
       // Process selection 
-      if (e.target && e.target.id === 'btnSave') {
+      if (e.target && e.target.id === 'btnDelete') {
         // 1. get associated book with btn selection
         // Get artcile ID
         let artPubId = e.target.getAttribute("value")
         // find artcile from array
-        let article = findArticleById(artPubId)
-        console.log( article )
-            // 2. Save article
-        // saveArticle(article)
-
+        let article = findArticleById(artPubId,savedArticlesArr)
+        // 2. Save article
+        deleteArticle(article)
         // The information coming accross is incomplete
         // needed to add them in an array instead
         // let article = JSON.parse(e.target.getAttribute("data-value"))
+      } else if (e.target && e.target.id === 'btnReadMore') {
+        // it is a nav link, redirect to the link
+        window.open(e.target.getAttribute("href"),'_blank')
+      } else if (e.target.getAttribute("class").includes('nav-link')) {
+        // it is a nav link, redirect to the link
+        window.location = e.target.getAttribute("href")
       }
-      // other dynamic buttons
     })
+
+    getSavedArticles()
+
   </script>
 
 </body>

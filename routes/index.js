@@ -1,5 +1,6 @@
 // Routes Index
-module.exports = (app) => {
+module.exports = (app,db) => {
   require('./htmlRoutes')(app)
-  require('./apiRoutes')(app) 
+  require('./apiNewsRoutes')(app) 
+  require('./apiDbRoutes')(app,db) 
 }

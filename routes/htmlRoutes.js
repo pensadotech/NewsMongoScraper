@@ -3,9 +3,9 @@ const path = require('path')
 
 module.exports = (app) => {
 
-  app.get('/savedarticles', (req, res) => {
+  app.get('/scrapearticles', (req, res) => {
     // return corrisponding page
-    res.sendFile(path.join(__dirname, '../public/savedArticles.html'))
+    res.sendFile(path.join(__dirname, '../public/scrapeArticles.html'))
   })
 
 }
