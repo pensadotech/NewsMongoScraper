@@ -1,4 +1,3 @@
-/* Applicatin CSS */
 body {
   /* Remove margins and padding around content */
   margin: 0;
@@ -6,34 +5,72 @@ body {
   /* Fix background during scrolling */
   background-attachment: fixed;
   /* Use scalable background image (cross borwser) */
-  /* background-image: url("./images/view.jpg"); */
+  background-image: url("./images/star-clusters-67616_1920.jpg");
   background-position: center center;
   background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: rgb(247, 248, 252);
+  /* color: #003A6C; */
 }
 
-.transparentContainer {
-  opacity: 0.9;
+.imgRnd10 {
+  /* Rounded image corners */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.imageShadow {
+  /* Add drop shadow */
+  -webkit-box-shadow: 2px 2px 3px 2px gray;
+  -moz-box-shadow: 2px 2px 3px 2px gray;
+  box-shadow: 2px 2px 3px 2px gray;
 }
 
 .container {
-  color: black;
+  background-color: rgb(250, 252, 253);
+  /* Transparent background */
+  opacity: 0.9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Set min height to fill larger screens */
+  min-height: 800px;
+}
+
+.header a {
+  font-size: 24px;
+}
+
+a:hover {
+  font-size: 25px;
+}
+
+.headerLetters {
+  color: lightgray;
+}
+
+.logoImg {
+  margin: 10px;
+}
+
+.articleImg {
+  margin: 25px 0px 0px 25px;
+  width: 200px;
+}
+
+.nav-item {
+  color: lightgray;
+}
+.card {
+  margin: 20px;
+  background-color: lightgray;
+  width: 90%;
+}
+
+.btn {
+  margin-right: 7px;
 }
 
 
-/* nav {
-  height: 135px;
-  line-height: 30px;
-} */
-
-/* .nav-wrapper {
-  background-color: rgb(233, 88, 21);
-  color: lightgray;
-  padding-bottom: 4rem;
-  margin-bottom: 2rem;
-  height: 30%;
-} */

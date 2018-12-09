@@ -5,59 +5,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mongo Scraper</title>
 
-  <!-- Compiled and minified CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Nasa headlines</title>
+  <link rel="icon" href="./images/nasaTransp.png">
+
+  <!-- awsome fonts and Bootstrap-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="./app.css">
 
 </head>
 
 <body>
 
-  <nav>
-    <nav class="nav-extended indigo darken-4">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">News Mongo Scraper</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/"><i class="material-icons left">home</i></a></li>
-          <li><a href="/savedarticles"><i class="material-icons left">library_books</i></a></li>
-          <a class="waves-effect waves-light btn" onclick="btnScrapeClick()">Scrape new Articles</a>
-          <a class="waves-effect waves-light btn" onclick="btnClearClick()">Clear Articles</a>
-        </ul>
+  <header class="header">
 
+    <!-- Logo and header -->
+    <div class="row">
+      <div class="col-md-4">
+        <img class="logoImg" src="./images/nasa1.png" alt="NasaLogo">
       </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="/"><i class="material-icons left">home</i></a></li>
-      <li><a href="/savedarticles"><i class="material-icons left">library_books</i></a></li>
-      <a class="waves-effect waves-light btn" onclick="btnScrapeClick()">Scrape new Articles</a>
-      <a class="waves-effect waves-light btn" onclick="btnClearClick()">Clear Articles</a>
-    </ul>
-
-    <div class="container">
-
-      <h1>Mongo Scraper</h1>
-      <h4>CNN latest news</h4>
-
-
-      <div id="articles">
-
-        <p>data goes here</p>
-
+      <div class="col-md-3 headerLetters">
+        <h1>Headlines</h1>
+        <h5>Mongo Scraper</h5>
       </div>
-
+      <div class="col-md-5">
+        <!--Leave empty  -->
+      </div>
     </div>
 
+    <!-- Menu  -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-end">
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ml-auto">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item ml-auto">
+            <a class="nav-link" href="/savedarticles">Articles</a>
+          </li>
+          <li class="nav-item ml-auto">
+            <a class="btn btn-secondary" onclick="btnScrapeClick()">Get Articles</a>
+          </li>
+          <li class="nav-item ml-auto">
+            <a class="btn btn-secondary" onclick="btnClearClick()">Clear Articles</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+  </header>
 
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- JS for side NavBar -->
-    <script src="./app.js"></script>
+  <div class="container">
+
+    <div id="articlesList">
+      <!-- Articles goes here -->
+    </div>
+
+  </div>
+
+
+  <!-- Boostrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <!-- App JavaScript -->
+  <script src="./app.js"></script>
+
+  <!-- App JavaScript -->
+  <script>
+    // dynamic buttons elements handlers 
+    document.addEventListener('click', e => {
+      // override from-submit default behavior
+      event.preventDefault()
+      // Process selection 
+      if (e.target && e.target.id === 'btnSave') {
+        // 1. get associated book with btn selection
+        // Get artcile ID
+        let artPubId = e.target.getAttribute("value")
+        // find artcile from array
+        let article = findArticleById(artPubId)
+        console.log( article )
+            // 2. Save article
+        // saveArticle(article)
+
+        // The information coming accross is incomplete
+        // needed to add them in an array instead
+        // let article = JSON.parse(e.target.getAttribute("data-value"))
+      }
+      // other dynamic buttons
+    })
+  </script>
 
 </body>
 
