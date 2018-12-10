@@ -18,9 +18,8 @@ app.use(bodyParser.urlencoded({extended: true }))
 app.use(bodyParser.json())
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/nasanews", {
-  useNewUrlParser: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nasanews";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Api and Html routes
 require('./routes')(app,db)
