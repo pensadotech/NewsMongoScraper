@@ -2,9 +2,10 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
-const axios = require('axios')
-const cheerio = require('cheerio')
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+
+// Require all models
+var db = require("./models");
 
 //server variable
 const app = express()
@@ -15,7 +16,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true }))
 // express middleware: capable to handle simple json
 app.use(bodyParser.json())
- 
+
+// Connect to the Mongo DB
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nasanews";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+// Api and Html routes
+require('./routes')(app,db)
+
 // Start listening - use 3000 if available or next available port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {

@@ -5,10 +5,11 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
-  // `title` must be of type String
+  pubId: String,
   title: String,
-  // `body` must be of type String
-  body: String
+  description: String,
+  image: String,
+  url: String
 });
 
 // This creates our model from the above schema, using mongoose's model method
